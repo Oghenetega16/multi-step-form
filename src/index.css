@@ -51,6 +51,7 @@ body {
   border: .12rem solid var(--white);
   border-radius: 50%;
   color: var(--white);
+  font-weight: 500;
 }
 
 .step.active {
@@ -59,13 +60,13 @@ body {
   border: none;
 }
 
-.personal {
+.personal, .select, .summary {
   position: relative;
   display: flex;
   flex-direction: column;
 }
 
-.personal-info {
+.personal-info, .select-plan, .select-add-ons, .summary-info {
   background-color: var(--white);
   display: flex;
   flex-direction: column;
@@ -74,11 +75,11 @@ body {
   margin: -4.4rem 1rem 0 1rem;
 }
 
-.personal-info h2, label {
+h2, h4, label {
   color: var(--marine-blue);
 }
 
-.personal-info p {
+.personal-info p, .select-plan p, .select-add-ons p, .summary-info p {
   font-size: 16px;
   margin: .9rem 0;
   color: var(--cool-gray);
@@ -94,8 +95,10 @@ input {
   width: 100%;
   margin-top: .2rem;
   margin-bottom: 1rem;
-  padding: .5rem;
+  padding: .8rem;
   font-family: inherit;
+  border-radius: .3rem;
+  border: 1px solid #ccc;
 }
 
 input:focus {
@@ -109,18 +112,133 @@ input::placeholder {
 }
 
 .button {
-  text-align: right;
   background-color: var(--white);
   width: 100%;
   padding: 1rem;
   margin-top: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
 }
 
-button {
+.button.single {
+  justify-content: flex-end;
+}
+
+.next {
   font-family: inherit;
   padding: .8rem;
   color: var(--white);
   background-color: var(--marine-blue);
   border: none;
   border-radius: .3rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.back {
+  color: var(--cool-gray);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.plan {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: .5rem;
+}
+
+.plan.active {
+  border: 1px solid var(--purplish-blue);
+  background-color: var(--magnolia);
+}
+
+.plan h4, .add h4 {
+  margin-bottom: .3rem;
+}
+
+.plan span, .add span {
+  color: var(--cool-gray);
+}
+
+.select-plan i {
+  color: var(--marine-blue);
+  font-size: 1.6rem;
+}
+
+.select-plan .toggle {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--alabaster);
+  justify-content: center;
+  border-radius: .5rem;
+}
+
+.select-plan .toggle .active {
+  color: var(--marine-blue);
+  font-weight: 500;
+}
+
+.add {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: .5rem;
+}
+
+.add .add-ons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.add .checkbox {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  border-radius: .3rem;
+  background-color: var(--purplish-blue);
+  border: 1px solid #ccc;
+  padding: .3rem;
+}
+
+.add.active {
+  border: 1px solid var(--purplish-blue);
+}
+
+.add .checkbox img {
+  width: 12px;
+}
+
+.addons-text span {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.add .price {
+  color: var(--marine-blue)
+}
+
+.summary-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 1.5rem;
+}
+
+.summary-info img {
+  width: 60px;
+  margin-bottom: 1.5rem;
 }

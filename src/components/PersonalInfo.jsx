@@ -1,4 +1,13 @@
-export default function PersonalInfo() {
+import StepCount from './StepCount'
+import StepButton from './StepButton'
+
+export default function PersonalInfo({ onNext }) {
+
+    function handleForm(event) {
+        event.preventDefault()
+        
+    }
+
     return (
         <>
             <div className="personal">
@@ -6,19 +15,16 @@ export default function PersonalInfo() {
                     <h2>Personal info</h2>
                     <p>Please provide your name, email, address, and phone number.</p>
 
-                    <form>
+                    <form onSubmit={handleForm}>
                         <label>Name</label>
-                        <input type="text" placeholder=" e.g. Stephen King" />
+                        <input type="text" placeholder="e.g. Stephen King" />
 
                         <label>Email Address</label>
-                        <input type="email" placeholder=" e.g. stephenking@lorem.com" />
+                        <input type="email" placeholder="e.g. stephenking@lorem.com" />
 
                         <label>Phone Number</label>
-                        <input type="text" placeholder=" e.g. +1 234 567 890" />
+                        <input type="text" placeholder="e.g. +1 234 567 890" />
                     </form>
-                </div>
-                <div className="button">
-                    <button type="submit">Next Step</button>
                 </div>
             </div>
         </>
