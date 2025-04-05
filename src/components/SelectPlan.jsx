@@ -1,6 +1,13 @@
+import { useState } from 'react'
 import StepButton from './StepButton'
 
 export default function SelectPlan() {
+    const [toggle, setToggle] = useState(true)
+
+    function handleToggle() {
+        setToggle(!toggle)
+    }
+
     return (
         <>
             <div className="select">
@@ -8,14 +15,15 @@ export default function SelectPlan() {
                     <h2>Select your plan</h2>
                     <p>You have the option of monthly or yearly billing.</p>
 
-                    <section>
+                    <section className='plans'>
                         <div className='plan active'>
                             <div className='img'>
                                 <img src="./src/assets/images/icon-arcade.svg" alt="icon-arcade" />
                             </div>
                             <div className='plan-text'>
                                 <h4>Arcade</h4>
-                                <span>$9/mo</span>
+                                {toggle ? <span className='month-plan'>$9/mo</span> : <span className='year-plan'>$9/yr</span>}
+                                {toggle ? '' : <span className='bonus'>2 months free</span>}
                             </div>
                         </div>
 
@@ -25,7 +33,8 @@ export default function SelectPlan() {
                             </div>
                             <div className='plan-text'>
                                 <h4>Advanced</h4>
-                                <span>$12/mo</span>
+                                {toggle ? <span className='month-plan'>$12/mo</span> : <span className='year-plan'>$120/yr</span>}
+                                {toggle ? '' : <span className='bonus'>2 months free</span>}
                             </div>
                         </div>
 
@@ -35,15 +44,16 @@ export default function SelectPlan() {
                             </div>
                             <div className='plan-text'>
                                 <h4>Pro</h4>
-                                <span>$15/mo</span>
+                                {toggle ? <span className='month-plan'>$15/mo</span> : <span className='year-plan'>$150/yr</span>}
+                                {toggle ? '' : <span className='bonus'>2 months free</span>}
                             </div>
                         </div>
                     </section>
 
                     <section className='toggle'>
-                        <p className='active'>Monthly</p>
-                        <i class="fa-solid fa-toggle-off"></i>
-                        <p>Yearly</p>
+                        <p className={toggle ? 'active' : ''}>Monthly</p>
+                        <i class={toggle ? "fa-solid fa-toggle-off" : "fa-solid fa-toggle-on"} onClick={handleToggle}></i>
+                        <p className={toggle ? '' : 'active'}>Yearly</p>
                     </section>
                 </div>
             </div>

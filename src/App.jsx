@@ -27,9 +27,10 @@ export default function App() {
 
   return (
     <div className="container">
-      <StepCount step={step} />
-      {renderStep()}
-
+      <div className='main'>
+        <StepCount step={step} />
+        {renderStep()}
+      </div>
       <StepButton step={step} onNext={nextStep} onBack={goBack} />
     </div>
   )

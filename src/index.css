@@ -42,7 +42,7 @@ body {
   gap: 1rem;
 }
 
-.step {
+.step .step-num {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,10 +54,14 @@ body {
   font-weight: 500;
 }
 
-.step.active {
+.step .step-num.active {
   color: var(--marine-blue);
   background-color: var(--light-blue);
   border: none;
+}
+
+.step-info {
+  display: none;
 }
 
 .personal, .select, .summary {
@@ -145,7 +149,6 @@ input::placeholder {
 
 .plan {
   display: flex;
-  align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
   padding: 1rem;
@@ -162,8 +165,18 @@ input::placeholder {
   margin-bottom: .3rem;
 }
 
-.plan span, .add span {
+.plan span {
+  display: block;
+}
+
+.plan .month-plan, .plan .year-plan, .add span {
   color: var(--cool-gray);
+}
+
+.plan .bonus {
+  color: var(--marine-blue);
+  margin: .5rem 0;
+  font-size: 14px;
 }
 
 .select-plan i {
@@ -241,4 +254,110 @@ input::placeholder {
 .summary-info img {
   width: 60px;
   margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  body {
+    display: grid;
+    place-content: center;
+    min-height: 100vh;
+  }
+
+  .container {
+    background-color: var(--white);
+    border-radius: .7rem;
+    padding: .7rem;
+    position: relative;
+    height: 589px;
+  }
+
+  .main {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .steps {
+    width: 250px;
+    height: 100%;
+    flex-direction: column;
+    justify-content: left;
+    gap: 1.8rem;
+    padding: 2.5rem 1.5rem;
+    border-radius: .7rem;
+    background-image: url(./assets/images/bg-sidebar-desktop.svg);
+  }
+
+  .step {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .step-info {
+    display: block;
+  }
+
+  .step-info p {
+    color: var(--white);
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .step-info span {
+    color: var(--light-gray);
+    font-weight: 400;
+    font-size: 12px;
+  }
+
+  .personal-info, .select-plan, .select-add-ons, .summary-info {
+    margin: 0 3rem;
+    height: 100%;
+    border-radius: 0;
+    padding-top: 2.5rem;
+    width: 500px;
+  }
+
+  input {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+  }
+
+  .button {
+    padding: 0 1.5rem;
+    background-color: transparent;
+    width: 500px;
+    position: absolute;
+    top: 65%;
+    left: 35.5%;
+  }
+
+  .personal-info p, .select-plan p, .select-add-ons p, .summary-info p {
+    margin: .7rem 0 1.8rem 0;
+  }
+
+  label {
+    margin-bottom: .3rem;
+  }
+
+  .select .plans {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .plan {
+    flex-direction: column;
+    gap: 2rem;
+    width: 140px;
+    align-items: left;
+  }
+
+  .select-plan .toggle {
+    margin-top: 1rem;
+    padding: .7rem;
+  }
+
+  .select-plan .toggle p {
+    margin: 0;
+  }
 }
