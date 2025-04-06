@@ -64,13 +64,13 @@ body {
   display: none;
 }
 
-.personal, .select, .summary {
+.personal, .select, .summary, .finish {
   position: relative;
   display: flex;
   flex-direction: column;
 }
 
-.personal-info, .select-plan, .select-add-ons, .summary-info {
+.personal-info, .select-plan, .select-add-ons, .finish-up, .summary-info {
   background-color: var(--white);
   display: flex;
   flex-direction: column;
@@ -83,7 +83,7 @@ h2, h4, label {
   color: var(--marine-blue);
 }
 
-.personal-info p, .select-plan p, .select-add-ons p, .summary-info p {
+.personal-info p, .select-plan p, .select-add-ons p, .finish-up p, .summary-info p {
   font-size: 16px;
   margin: .9rem 0;
   color: var(--cool-gray);
@@ -254,6 +254,50 @@ input::placeholder {
 .summary-info img {
   width: 60px;
   margin-bottom: 1.5rem;
+}
+
+.finish-items {
+  background-color: var(--magnolia);
+  padding: 1rem;
+  border-radius: .5rem;
+}
+
+.plan-items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: .7rem;
+  border-bottom: .1rem solid #ccc;
+}
+
+.addons-items {
+  display: flex;
+  flex-direction: column;
+  padding-top: .9rem;
+  gap: .8rem;
+}
+
+.addons-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 0 1rem;
+}
+
+.addons-desc, a {
+  color: var(--cool-gray);
+  font-size: 14px;
+}
+
+.addons-value {
+  color: var(--marine-blue);
+  font-size: 14px;
 }
 
 @media (min-width: 768px) {

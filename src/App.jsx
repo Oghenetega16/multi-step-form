@@ -3,6 +3,7 @@ import SelectPlan from './components/SelectPlan'
 import Addons from './components/Addons'
 import StepCount from './components/StepCount'
 import StepButton from './components/StepButton'
+import FinishingUp from './components/FinishingUp'
 import Summary from './components/Summary'
 import { useState } from 'react'
 
@@ -12,18 +13,32 @@ export default function App() {
   const nextStep = () => setStep(prev => prev + 1)
   const goBack = () => setStep(prev => prev - 1)
 
+  const [toggle, setToggle] = useState(true)
+
+  function handleToggle() {
+      setToggle(!toggle)
+  }
+
   const renderStep = () => {
     switch (step) {
       case 1:
-        return <PersonalInfo onNext={nextStep} />
+      return <PersonalInfo onNext={nextStep} />
       case 2:
-        return <SelectPlan />
+        return <SelectPlan toggle={toggle} handleToggle={handleToggle} />
       case 3:
-        return <Addons />
+        return <Addons toggle={toggle} />
       default:
-        return <Summary />
+        return (
+          <>
+            <FinishingUp />
+            {/* <Summary /> */}
+          </>
+        )
     }
   }
+
+  
+
 
   return (
     <div className="container">

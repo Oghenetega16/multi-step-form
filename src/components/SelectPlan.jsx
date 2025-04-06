@@ -1,12 +1,6 @@
-import { useState } from 'react'
 import StepButton from './StepButton'
 
-export default function SelectPlan() {
-    const [toggle, setToggle] = useState(true)
-
-    function handleToggle() {
-        setToggle(!toggle)
-    }
+export default function SelectPlan({ toggle, handleToggle }) {
 
     return (
         <>

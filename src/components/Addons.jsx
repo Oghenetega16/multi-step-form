@@ -1,6 +1,6 @@
 import StepButton from './StepButton'
 
-export default function AddOns() {
+export default function AddOns({ toggle }) {
     return (
         <>
             <div className="select">
@@ -19,7 +19,7 @@ export default function AddOns() {
                                     <span>Access to multiplayer games</span>
                                 </div>
                             </div>
-                            <span className='price'>+$1/mo</span>
+                            {toggle ? <span className='price'>+$1/mo</span> : <span className='price'>+$10/yr</span>}
                         </div>
 
                         <div className='add active'>
@@ -32,7 +32,7 @@ export default function AddOns() {
                                     <span>Extra 1TB of cloud save</span>
                                 </div>
                             </div>
-                            <span className='price'>+$2/mo</span>
+                            {toggle ? <span className='price'>+$2/mo</span> : <span className='price'>+$20/yr</span>}
                         </div>
 
                         <div className='add'>
@@ -45,7 +45,7 @@ export default function AddOns() {
                                     <span>Custom theme on your profile</span>
                                 </div>
                             </div>
-                            <span className='price'>+$2/mo</span>
+                            {toggle ? <span className='price'>+$2/mo</span> : <span className='price'>+$20/yr</span>}
                         </div>
                     </section>
                 </div>
