@@ -1,6 +1,6 @@
 import StepButton from './StepButton'
 
-export default function FinishingUp({ toggle }) {
+export default function FinishingUp() {
 
     return (
         <>
@@ -34,7 +34,7 @@ export default function FinishingUp({ toggle }) {
 
                     <section className='total'>
                         <p>Total (per year)</p>
-                        <h4>$120/yr</h4>
+                        <h4 className='total-value'>$120/yr</h4>
                     </section>
                 </div>
             </div>

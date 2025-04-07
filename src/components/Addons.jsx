@@ -1,6 +1,7 @@
 import StepButton from './StepButton'
 
 export default function AddOns({ toggle }) {
+    
     return (
         <>
             <div className="select">

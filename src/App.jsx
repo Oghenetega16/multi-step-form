@@ -8,7 +8,7 @@ import Summary from './components/Summary'
 import { useState } from 'react'
 
 export default function App() {
-  const [step, setStep] = useState(2)
+  const [step, setStep] = useState(1)
 
   const nextStep = () => setStep(prev => prev + 1)
   const goBack = () => setStep(prev => prev - 1)
@@ -27,12 +27,11 @@ export default function App() {
         return <SelectPlan toggle={toggle} handleToggle={handleToggle} />
       case 3:
         return <Addons toggle={toggle} />
+      case 4:
+        return <FinishingUp />
       default:
         return (
-          <>
-            <FinishingUp />
-            {/* <Summary /> */}
-          </>
+            <Summary />
         )
     }
   }

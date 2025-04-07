@@ -16,7 +16,7 @@ export default function SelectPlan({ toggle, handleToggle }) {
                             </div>
                             <div className='plan-text'>
                                 <h4>Arcade</h4>
-                                {toggle ? <span className='month-plan'>$9/mo</span> : <span className='year-plan'>$9/yr</span>}
+                                {toggle ? <span className='month-plan'>$9/mo</span> : <span className='year-plan'>$90/yr</span>}
                                 {toggle ? '' : <span className='bonus'>2 months free</span>}
                             </div>
                         </div>
