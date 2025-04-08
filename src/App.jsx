@@ -36,9 +36,6 @@ export default function App() {
     }
   }
 
-  
-
-
   return (
     <div className="container">
       <div className='main'>
@@ -49,4 +46,8 @@ export default function App() {
     </div>
   )
 }
+
+// What's left to do:
+// 1. The form
+// 2. The other pages
 
