@@ -1,6 +1,18 @@
+import { useState } from 'react'
 import StepButton from './StepButton'
 
 export default function SelectPlan({ toggle, handleToggle }) {
+    const [selectedPlan, setSelectedPlan] = useState({
+        arcade: true,
+        advanced: false,
+        pro: false
+    })
+
+    function togglePlan(key) {
+        setSelectedPlan((prev) => ({
+            [key] : !prev[key]
+        }))
+    }
 
     return (
         <>
@@ -10,7 +22,7 @@ export default function SelectPlan({ toggle, handleToggle }) {
                     <p>You have the option of monthly or yearly billing.</p>
 
                     <section className='plans'>
-                        <div className='plan active'>
+                        <div className={selectedPlan.arcade ? 'plan active' : 'plan'} onClick={() => togglePlan('arcade')}>
                             <div className='img'>
                                 <img src="./src/assets/images/icon-arcade.svg" alt="icon-arcade" />
                             </div>
@@ -21,7 +33,7 @@ export default function SelectPlan({ toggle, handleToggle }) {
                             </div>
                         </div>
 
-                        <div className='plan'>
+                        <div className={selectedPlan.advanced ? 'plan active' : 'plan'} onClick={() => togglePlan('advanced')}>
                             <div className='img'>
                                 <img src="./src/assets/images/icon-advanced.svg" alt="icon-advanced" />
                             </div>
@@ -32,7 +44,7 @@ export default function SelectPlan({ toggle, handleToggle }) {
                             </div>
                         </div>
 
-                        <div className='plan'>
+                        <div className={selectedPlan.pro ? 'plan active' : 'plan'} onClick={() => togglePlan('pro')}>
                             <div className='img'>
                                 <img src="./src/assets/images/icon-pro.svg" alt="icon-pro" />
                             </div>

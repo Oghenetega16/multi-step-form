@@ -9,11 +9,10 @@ import { useState } from 'react'
 
 export default function App() {
   const [step, setStep] = useState(1)
+  const [toggle, setToggle] = useState(true)
 
   const nextStep = () => setStep(prev => prev + 1)
   const goBack = () => setStep(prev => prev - 1)
-
-  const [toggle, setToggle] = useState(true)
 
   function handleToggle() {
       setToggle(!toggle)
@@ -22,7 +21,7 @@ export default function App() {
   const renderStep = () => {
     switch (step) {
       case 1:
-      return <PersonalInfo onNext={nextStep} />
+        return <PersonalInfo onNext={nextStep} />
       case 2:
         return <SelectPlan toggle={toggle} handleToggle={handleToggle} />
       case 3:

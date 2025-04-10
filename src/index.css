@@ -239,9 +239,12 @@ input::placeholder {
   display: flex;
   justify-content: center;
   border-radius: .3rem;
-  background-color: var(--purplish-blue);
   border: 1px solid #ccc;
   padding: .3rem;
+}
+
+.add .checkbox.active {
+  background-color: var(--purplish-blue);
 }
 
 .add .checkbox img {
