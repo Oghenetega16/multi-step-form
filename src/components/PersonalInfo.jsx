@@ -2,20 +2,7 @@ import StepCount from './StepCount'
 import StepButton from './StepButton'
 import { useState } from 'react'
 
-export default function PersonalInfo({ onNext }) {
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        phone: ""
-    })
-
-    function handleChange(event) {
-        setFormData({
-            ...formData,
-            [event.target.name]: event.target.value
-        })
-    }
-
+export default function PersonalInfo({ formData, updateFormData }) {
     const[errors, setErrors] = useState({})
 
     function validate() {
@@ -37,15 +24,14 @@ export default function PersonalInfo({ onNext }) {
         }
 
         setErrors(newErrors);
-        return Object.keys(newErrors).length === 0;
+        return Object.keys(newErrors).length === 0
     }
 
     
     function handleSubmit(event) {
         event.preventDefault()
         if (validate()) {
-            console.log('Form submitted:', formData)
-            onNext()
+            updateFormData(formData)
         }
     }
 
@@ -63,7 +49,7 @@ export default function PersonalInfo({ onNext }) {
                                 name="name" 
                                 placeholder="e.g. Stephen King" 
                                 value={formData.name}
-                                onChange={handleChange}
+                                onChange={(event) => updateFormData({name: event.target.value})}
                         />
 
                         <label>Email Address</label>
@@ -72,7 +58,7 @@ export default function PersonalInfo({ onNext }) {
                                 name="email"
                                 placeholder="e.g. stephenking@lorem.com" 
                                 value={formData.email}
-                                onChange={handleChange}
+                                onChange={(event) => updateFormData({email: event.target.value})}
                         />
 
                         <label>Phone Number</label>
@@ -81,7 +67,7 @@ export default function PersonalInfo({ onNext }) {
                                 name="phone"
                                 placeholder="e.g. +1 234 567 890" 
                                 value={formData.phone}
-                                onChange={handleChange}
+                                onChange={(event) => updateFormData({phone: event.target.value})}
                         />
                     </form>
                 </div>

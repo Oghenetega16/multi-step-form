@@ -1,19 +1,13 @@
-import { useState } from 'react'
 import StepButton from './StepButton'
 
-export default function AddOns({ toggle }) {
-    const [selectedAddons, setSelectedAddons] = useState({
-        onlineService: true,
-        largerStorage: true,
-        customProfile: false
-    })
+export default function AddOns({ formData, updateFormData, toggle }) {
+    const handleAddonToggle = (addon) => {
+        const updatedAddons = formData.addons.includes(addon)
+        ? formData.addons.filter((item) => item !== addon)
+        : [...formData.addons, addon];
 
-    function toggleAddon(key) {
-        setSelectedAddons((prev) => ({
-            ...prev,
-            [key] : !prev[key]
-        }))
-    }
+        updateFormData({ addons: updatedAddons });
+    };
     
     return (
         <>
@@ -24,48 +18,48 @@ export default function AddOns({ toggle }) {
 
                     <section>
                         <div
-                            className={selectedAddons.onlineService ? 'add active' : 'add'}
-                            onClick={() => toggleAddon('onlineService')}>
+                            className={formData.addons[0] === 'online' ? 'add active' : 'add'}
+                            onClick={() => handleAddonToggle('online')}>
                             <div className='add-ons'>
-                                <div className={selectedAddons.onlineService ? 'checkbox active' : 'checkbox'}>
-                                    {selectedAddons.onlineService && <img src="./src/assets/images/icon-checkmark.svg" alt="icon-checkmark" />}
+                                <div className={formData.addons === 'onlineService' ? 'checkbox active' : 'checkbox'}>
+                                    {formData.addons === 'onlineService' && <img src="./src/assets/images/icon-checkmark.svg" alt="icon-checkmark" />}
                                 </div>
                                 <div className='addons-text'>
                                     <h4>Online service</h4>
                                     <span>Access to multiplayer games</span>
                                 </div>
                             </div>
-                            {toggle ? <span className='price'>+$1/mo</span> : <span className='price'>+$10/yr</span>}
+                            <span className='price'>{toggle ? '+$1/mo' : '+$10/yr'}</span>
                         </div>
 
                         <div
-                            className={selectedAddons.largerStorage ? 'add active' : 'add'}
-                            onClick={() => toggleAddon('largerStorage')}>
+                            className={formData.addons[1] === 'storage' ? 'add active' : 'add'}
+                            onClick={() => handleAddonToggle('storage')}>
                             <div className='add-ons'>
-                                <div className={selectedAddons.largerStorage ? 'checkbox active' : 'checkbox'}>
-                                    {selectedAddons.largerStorage && <img src="./src/assets/images/icon-checkmark.svg" alt="icon-checkmark" />}
+                                <div className={formData.addons === 'largerStorage' ? 'checkbox active' : 'checkbox'}>
+                                    {formData.addons === 'largerStorage' && <img src="./src/assets/images/icon-checkmark.svg" alt="icon-checkmark" />}
                                 </div>
                                 <div className='addons-text'>
                                     <h4>Larger storage</h4>
                                     <span>Extra 1TB of cloud save</span>
                                 </div>
                             </div>
-                            {toggle ? <span className='price'>+$2/mo</span> : <span className='price'>+$20/yr</span>}
+                            <span className='price'>{toggle ? '+$1/mo' : '+$10/yr'}</span>
                         </div>
 
                         <div
-                            className={selectedAddons.customProfile ? 'add active' : 'add'}
-                            onClick={() => toggleAddon('customProfile')}>
+                            className={formData.addons[2] === 'profile' ? 'add active' : 'add'}
+                            onClick={() => handleAddonToggle('profile')}>
                             <div className='add-ons'>
-                                <div className={selectedAddons.customProfile ? 'checkbox active' : 'checkbox'}>
-                                    {selectedAddons.customProfile && <img src="./src/assets/images/icon-checkmark.svg" alt="icon-checkmark" />}
+                                <div className={formData.addons === 'customProfile' ? 'checkbox active' : 'checkbox'}>
+                                    {formData.addons === 'customProfile' && <img src="./src/assets/images/icon-checkmark.svg" alt="icon-checkmark" />}
                                 </div>
                                 <div className='addons-text'>
                                     <h4>Customizable profile</h4>
                                     <span>Custom theme on your profile</span>
                                 </div>
                             </div>
-                            {toggle ? <span className='price'>+$2/mo</span> : <span className='price'>+$20/yr</span>}
+                            <span className='price'>{toggle ? '+$1/mo' : '+$10/yr'}</span>
                         </div>
                     </section>
                 </div>

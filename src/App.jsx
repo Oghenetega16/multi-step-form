@@ -10,24 +10,43 @@ import { useState } from 'react'
 export default function App() {
   const [step, setStep] = useState(1)
   const [toggle, setToggle] = useState(true)
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    plan: '',
+    addons: ['online', 'storage', 'profile']
+  })
 
   const nextStep = () => setStep(prev => prev + 1)
   const goBack = () => setStep(prev => prev - 1)
+  const handleToggle = () => setToggle(!toggle)
 
-  function handleToggle() {
-      setToggle(!toggle)
+  const updateFormData = (newData) => setFormData((prev) => ({ ...prev, ...newData }))
+
+  const isValidStep = () => {
+    switch (step) {
+      case 1:
+        return formData.name && formData.email && formData.phone;
+      case 2:
+        return formData.plan;
+      case 3:
+        return formData.addons.length > 0;
+      default:
+        return true;
+    }
   }
-
+  
   const renderStep = () => {
     switch (step) {
       case 1:
-        return <PersonalInfo onNext={nextStep} />
+        return <PersonalInfo formData={formData} updateFormData={updateFormData} />
       case 2:
-        return <SelectPlan toggle={toggle} handleToggle={handleToggle} />
+        return <SelectPlan formData={formData} updateFormData={updateFormData} toggle={toggle} handleToggle={handleToggle} />
       case 3:
-        return <Addons toggle={toggle} />
+        return <Addons formData={formData} updateFormData={updateFormData} toggle={toggle} />
       case 4:
-        return <FinishingUp />
+        return <FinishingUp formData={formData} />
       default:
         return (
             <Summary />
@@ -41,7 +60,7 @@ export default function App() {
         <StepCount step={step} />
         {renderStep()}
       </div>
-      <StepButton step={step} onNext={nextStep} onBack={goBack} />
+      <StepButton step={step} onNext={nextStep} onBack={goBack} isValid={isValidStep} />
     </div>
   )
 }

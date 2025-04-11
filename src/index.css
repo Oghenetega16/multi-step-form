@@ -212,6 +212,10 @@ input::placeholder {
   font-weight: 500;
 }
 
+.select-plan .toggle i, .select-plan .toggle p{
+  cursor: pointer;
+}
+
 .select-plan .toggle .active {
   color: var(--marine-blue);
   font-weight: 500;
