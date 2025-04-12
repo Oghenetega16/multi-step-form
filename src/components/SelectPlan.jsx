@@ -1,6 +1,7 @@
 import StepButton from './StepButton'
 
-export default function SelectPlan({ formData, updateFormData, toggle, handleToggle }) {
+export default function SelectPlan({ step, formData, updateFormData, toggle, handleToggle, onNext, onBack }) {
+    
     const handlePlanSelect = (plan) => {
         updateFormData({ plan })
     }
@@ -54,6 +55,12 @@ export default function SelectPlan({ formData, updateFormData, toggle, handleTog
                     </section>
                 </div>
             </div>
+            <StepButton 
+                step={step}
+                onNext={onNext} 
+                onBack={onBack} 
+                isValid={() => !!formData.plan}
+                />
         </>
     )
 }

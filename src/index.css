@@ -90,9 +90,16 @@ h2, h4, label {
   line-height: 1.5em;
 }
 
-label {
-  display: block;
+.label_error {
+  display: flex;
+  justify-content: space-between;
   font-size: 13px;
+}
+
+.label_error p {
+  font-size: 10px;
+  color: var(--strawberry-red);
+  margin: 0
 }
 
 input {
@@ -103,6 +110,10 @@ input {
   font-family: inherit;
   border-radius: .3rem;
   border: 1px solid #ccc;
+}
+
+.input-error {
+  border: 1px solid var(--strawberry-red);
 }
 
 input:focus {

@@ -2,7 +2,6 @@ import PersonalInfo from './components/PersonalInfo'
 import SelectPlan from './components/SelectPlan'
 import Addons from './components/Addons'
 import StepCount from './components/StepCount'
-import StepButton from './components/StepButton'
 import FinishingUp from './components/FinishingUp'
 import Summary from './components/Summary'
 import { useState } from 'react'
@@ -40,16 +39,16 @@ export default function App() {
   const renderStep = () => {
     switch (step) {
       case 1:
-        return <PersonalInfo formData={formData} updateFormData={updateFormData} />
+        return <PersonalInfo formData={formData} updateFormData={updateFormData} isValid={isValidStep} step={step} onNext={nextStep} onBack={goBack} />
       case 2:
-        return <SelectPlan formData={formData} updateFormData={updateFormData} toggle={toggle} handleToggle={handleToggle} />
+        return <SelectPlan step={step} isValid={isValidStep} formData={formData} updateFormData={updateFormData} toggle={toggle} handleToggle={handleToggle} onNext={nextStep} onBack={goBack} />
       case 3:
         return <Addons formData={formData} updateFormData={updateFormData} toggle={toggle} />
       case 4:
         return <FinishingUp formData={formData} />
       default:
         return (
-            <Summary />
+          <Summary />
         )
     }
   }
@@ -60,12 +59,8 @@ export default function App() {
         <StepCount step={step} />
         {renderStep()}
       </div>
-      <StepButton step={step} onNext={nextStep} onBack={goBack} isValid={isValidStep} />
     </div>
   )
 }
 
-// What's left to do:
-// 1. The form
-// 2. The other pages
 

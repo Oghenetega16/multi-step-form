@@ -1,8 +1,7 @@
-import StepCount from './StepCount'
 import StepButton from './StepButton'
 import { useState } from 'react'
 
-export default function PersonalInfo({ formData, updateFormData }) {
+export default function PersonalInfo({ step, formData, updateFormData, onNext }) {
     const[errors, setErrors] = useState({})
 
     function validate() {
@@ -18,21 +17,13 @@ export default function PersonalInfo({ formData, updateFormData }) {
         }
 
         if (!formData.phone.trim()) {
-            newErrors.phone = "Please enter a valid phone"
+            newErrors.phone = "Phone number is required"
         } else if (!/^\d{10,15}$/.test(formData.phone)) {
             newErrors.phone = "Please enter a valid phone"
         }
 
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0
-    }
-
-    
-    function handleSubmit(event) {
-        event.preventDefault()
-        if (validate()) {
-            updateFormData(formData)
-        }
     }
 
     return (
@@ -42,36 +33,50 @@ export default function PersonalInfo({ formData, updateFormData }) {
                     <h2>Personal info</h2>
                     <p>Please provide your name, email, address, and phone number.</p>
 
-                    <form onSubmit={handleSubmit}>
-                        <label>Name</label>
-                        {errors.name && <p className="error">{errors.name}</p>}
+                    <form>
+                        <div className='label_error'>
+                            <label>Name</label>
+                            {errors.name && <p className="error">{errors.name}</p>}
+                        </div>
+                        
                         <input type="text"
                                 name="name" 
                                 placeholder="e.g. Stephen King" 
                                 value={formData.name}
+                                className={errors.name && 'input-error'}
                                 onChange={(event) => updateFormData({name: event.target.value})}
                         />
 
-                        <label>Email Address</label>
-                        {errors.email && <p className="error">{errors.email}</p>}
+                        <div className='label_error'>
+                            <label>Email Address</label>
+                            {errors.email && <p className="error">{errors.email}</p>}
+                        </div>
+                        
                         <input type="email"
                                 name="email"
                                 placeholder="e.g. stephenking@lorem.com" 
                                 value={formData.email}
+                                className={errors.email && 'input-error'}
                                 onChange={(event) => updateFormData({email: event.target.value})}
                         />
 
-                        <label>Phone Number</label>
-                        {errors.phone && <p className="error">{errors.phone}</p>}
+                        <div className='label_error'>
+                            <label>Phone Number</label>
+                            {errors.phone && <p className="error">{errors.phone}</p>}
+                        </div>
+                        
                         <input type="tel"
                                 name="phone"
                                 placeholder="e.g. +1 234 567 890" 
                                 value={formData.phone}
+                                className={errors.phone && 'input-error'}
                                 onChange={(event) => updateFormData({phone: event.target.value})}
                         />
+                        
                     </form>
                 </div>
             </div>
+            <StepButton step={step} onNext={onNext} isValid={validate}/>
         </>
     )
 }
