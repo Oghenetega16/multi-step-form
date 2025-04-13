@@ -1,4 +1,4 @@
-export default function StepButton( { step, onNext, onBack, isValid }) {
+export default function StepButton( { step, onNext, onBack, isValid, nextLabel='Next Step'}) {
     return (
         <div className={step == 1 ? 'button single' : 'button'}>
             {step > 1 && <p className="back" onClick={onBack}>Go Back</p>}
@@ -9,7 +9,7 @@ export default function StepButton( { step, onNext, onBack, isValid }) {
                     } else if (!isValid) {
                         onNext()
                     }
-                }}>Next Step</button> 
+                }}>{nextLabel}</button> 
         </div>
     )
 }

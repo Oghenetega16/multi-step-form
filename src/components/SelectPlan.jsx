@@ -60,7 +60,7 @@ export default function SelectPlan({ step, formData, updateFormData, toggle, han
                 onNext={onNext} 
                 onBack={onBack} 
                 isValid={() => !!formData.plan}
-                />
+            />
         </>
     )
 }

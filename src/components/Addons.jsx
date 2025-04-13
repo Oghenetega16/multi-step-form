@@ -1,6 +1,6 @@
 import StepButton from './StepButton'
 
-export default function AddOns({ formData, updateFormData, toggle }) {
+export default function AddOns({ step, formData, updateFormData, toggle, onNext, onBack }) {
     const handleAddonToggle = (addon) => {
         const updatedAddons = formData.addons.includes(addon)
         ? formData.addons.filter((item) => item !== addon)
@@ -18,11 +18,11 @@ export default function AddOns({ formData, updateFormData, toggle }) {
 
                     <section>
                         <div
-                            className={formData.addons[0] === 'online' ? 'add active' : 'add'}
+                            className={formData.addons.includes('online') ? 'add active' : 'add'}
                             onClick={() => handleAddonToggle('online')}>
                             <div className='add-ons'>
-                                <div className={formData.addons === 'onlineService' ? 'checkbox active' : 'checkbox'}>
-                                    {formData.addons === 'onlineService' && <img src="./src/assets/images/icon-checkmark.svg" alt="icon-checkmark" />}
+                                <div className={formData.addons.includes('online') ? 'checkbox active' : 'checkbox'}>
+                                    {formData.addons.includes('online') && <img src="./src/assets/images/icon-checkmark.svg" alt="icon-checkmark" />}
                                 </div>
                                 <div className='addons-text'>
                                     <h4>Online service</h4>
@@ -33,11 +33,11 @@ export default function AddOns({ formData, updateFormData, toggle }) {
                         </div>
 
                         <div
-                            className={formData.addons[1] === 'storage' ? 'add active' : 'add'}
+                            className={formData.addons.includes('storage') ? 'add active' : 'add'}
                             onClick={() => handleAddonToggle('storage')}>
                             <div className='add-ons'>
-                                <div className={formData.addons === 'largerStorage' ? 'checkbox active' : 'checkbox'}>
-                                    {formData.addons === 'largerStorage' && <img src="./src/assets/images/icon-checkmark.svg" alt="icon-checkmark" />}
+                                <div className={formData.addons.includes('storage') ? 'checkbox active' : 'checkbox'}>
+                                    {formData.addons.includes('storage') && <img src="./src/assets/images/icon-checkmark.svg" alt="icon-checkmark" />}
                                 </div>
                                 <div className='addons-text'>
                                     <h4>Larger storage</h4>
@@ -48,11 +48,11 @@ export default function AddOns({ formData, updateFormData, toggle }) {
                         </div>
 
                         <div
-                            className={formData.addons[2] === 'profile' ? 'add active' : 'add'}
+                            className={formData.addons.includes('profile') ? 'add active' : 'add'}
                             onClick={() => handleAddonToggle('profile')}>
                             <div className='add-ons'>
-                                <div className={formData.addons === 'customProfile' ? 'checkbox active' : 'checkbox'}>
-                                    {formData.addons === 'customProfile' && <img src="./src/assets/images/icon-checkmark.svg" alt="icon-checkmark" />}
+                                <div className={formData.addons.includes('profile') ? 'checkbox active' : 'checkbox'}>
+                                    {formData.addons.includes('profile') && <img src="./src/assets/images/icon-checkmark.svg" alt="icon-checkmark" />}
                                 </div>
                                 <div className='addons-text'>
                                     <h4>Customizable profile</h4>
@@ -64,6 +64,12 @@ export default function AddOns({ formData, updateFormData, toggle }) {
                     </section>
                 </div>
             </div>
+            <StepButton 
+                step={step}
+                onNext={onNext} 
+                onBack={onBack} 
+                isValid={() => formData.addons.length > 0}
+            />
         </>
     )
 }

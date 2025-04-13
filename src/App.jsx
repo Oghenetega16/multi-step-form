@@ -13,8 +13,8 @@ export default function App() {
     name: '',
     email: '',
     phone: '',
-    plan: '',
-    addons: ['online', 'storage', 'profile']
+    plan: 'arcade',
+    addons: ['online', 'storage']
   })
 
   const nextStep = () => setStep(prev => prev + 1)
@@ -35,6 +35,10 @@ export default function App() {
         return true;
     }
   }
+
+  const goToStep = (stepNumber) => {
+    setStep(stepNumber)
+  }
   
   const renderStep = () => {
     switch (step) {
@@ -43,9 +47,9 @@ export default function App() {
       case 2:
         return <SelectPlan step={step} isValid={isValidStep} formData={formData} updateFormData={updateFormData} toggle={toggle} handleToggle={handleToggle} onNext={nextStep} onBack={goBack} />
       case 3:
-        return <Addons formData={formData} updateFormData={updateFormData} toggle={toggle} />
+        return <Addons step={step} isValid={isValidStep} formData={formData} updateFormData={updateFormData} toggle={toggle} onNext={nextStep} onBack={goBack} />
       case 4:
-        return <FinishingUp formData={formData} />
+        return <FinishingUp step={step} formData={formData} toggle={toggle} onNext={nextStep} onBack={goBack} goToStep={goToStep}/>
       default:
         return (
           <Summary />

@@ -319,6 +319,15 @@ input::placeholder {
   font-size: 15px;
 }
 
+.plan-item button {
+  border: none;
+  background: transparent;
+  text-decoration: underline;
+  font-family: inherit;
+  color: var(--cool-gray);
+  font-size: 14px;
+}
+
 .addons-items {
   display: flex;
   flex-direction: column;
@@ -344,7 +353,7 @@ input::placeholder {
   margin: 0;
 }
 
-.addons-desc, a {
+.addons-desc {
   color: var(--cool-gray);
   font-size: 14px;
 }
