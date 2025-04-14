@@ -68,6 +68,7 @@ export default function FinishingUp({ step, formData, toggle, onNext, onBack, go
                 onBack={onBack} 
                 isValid={() => !!formData.plan}
                 nextLabel='Confirm'
+                className='confirm'
             />
         </>
     )

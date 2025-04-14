@@ -99,7 +99,7 @@ h2, h4, label {
 .label_error p {
   font-size: 10px;
   color: var(--strawberry-red);
-  margin: 0
+  margin: 0;
 }
 
 input {
@@ -135,6 +135,8 @@ input::placeholder {
   align-items: center;
   justify-content: space-between;
   font-size: 16px;
+  position: absolute;
+  bottom: 0;
 }
 
 .button.single {
@@ -326,6 +328,7 @@ input::placeholder {
   font-family: inherit;
   color: var(--cool-gray);
   font-size: 14px;
+  cursor: pointer;
 }
 
 .addons-items {
@@ -387,7 +390,6 @@ input::placeholder {
   .main {
     display: flex;
     justify-content: center;
-    width: 100%;
     height: 100%;
   }
 
@@ -428,7 +430,7 @@ input::placeholder {
     height: 100%;
     border-radius: 0;
     padding-top: 2.5rem;
-    width: 500px;
+    width: clamp(368.83px, 50vw, 500px);
   }
 
   input {
@@ -439,10 +441,10 @@ input::placeholder {
   .button {
     padding: 0 1.5rem;
     background-color: transparent;
-    width: 500px;
+    width: clamp(368.83px, 50vw, 500px);
     position: absolute;
-    top: 65%;
-    left: 35.5%;
+    top: 350px;
+    left: 310px;
   }
 
   .personal-info p, .select-plan p, .select-add-ons p, .finish-up p, .summary-info p {
@@ -453,9 +455,14 @@ input::placeholder {
     margin-bottom: .3rem;
   }
 
+  .label_error p {
+    margin: 0;
+  }
+
   .select .plans {
     display: flex;
     justify-content: space-between;
+    gap: 1rem;
   }
 
   .plan {
