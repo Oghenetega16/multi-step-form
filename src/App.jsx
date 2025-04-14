@@ -5,6 +5,7 @@ import StepCount from './components/StepCount'
 import FinishingUp from './components/FinishingUp'
 import Summary from './components/Summary'
 import { useState } from 'react'
+import StepButton from './components/StepButton'
 
 export default function App() {
   const [step, setStep] = useState(1)
@@ -16,6 +17,7 @@ export default function App() {
     plan: 'arcade',
     addons: ['online', 'storage']
   })
+  const [isConfirmed, setIsConfirmed] = useState(false)
 
   const nextStep = () => setStep(prev => prev + 1)
   const goBack = () => setStep(prev => prev - 1)
@@ -49,11 +51,7 @@ export default function App() {
       case 3:
         return <Addons step={step} isValid={isValidStep} formData={formData} updateFormData={updateFormData} toggle={toggle} onNext={nextStep} onBack={goBack} />
       case 4:
-        return <FinishingUp step={step} formData={formData} toggle={toggle} onNext={nextStep} onBack={goBack} goToStep={goToStep}/>
-      default:
-        return (
-          <Summary />
-        )
+        return isConfirmed ? (<Summary />) : (<FinishingUp step={step} formData={formData} toggle={toggle} onNext={() => setIsConfirmed(true)} onBack={goBack} goToStep={goToStep}/>)
     }
   }
 

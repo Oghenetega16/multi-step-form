@@ -2,7 +2,7 @@ import StepButton from './StepButton'
 
 export default function FinishingUp({ step, formData, toggle, onNext, onBack, goToStep }) {
 
-    const { plan, addons } = formData;
+    const { plan, addons } = formData
 
     const planPrices = {
         arcade: toggle ? 9 : 90,
@@ -19,8 +19,7 @@ export default function FinishingUp({ step, formData, toggle, onNext, onBack, go
     const planDisplay = plan.charAt(0).toUpperCase() + plan.slice(1)
     const planRate = toggle ? 'mo' : 'yr'
 
-    const total = planPrices[plan] + addons.reduce((sum, addon) => sum + addonPrices[addon], 0);
-
+    const total = planPrices[plan] + addons.reduce((sum, addon) => sum + addonPrices[addon], 0)
 
     return (
         <>
