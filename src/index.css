@@ -35,7 +35,7 @@ body {
   display: flex;
   justify-content: center;
   padding: 2.5rem 0;
-  background-image: url(./public/images/bg-sidebar-mobile.svg);
+  background-image: url('/images/bg-sidebar-mobile.svg');
   background-repeat: no-repeat;
   background-size: cover;
   height: 170px;
@@ -403,7 +403,7 @@ input::placeholder {
     gap: 1.8rem;
     padding: 2.5rem 1.5rem;
     border-radius: .7rem;
-    background-image: url(./public/images/bg-sidebar-desktop.svg);
+    background-image: url('/images/bg-sidebar-desktop.svg');
   }
 
   .step {
