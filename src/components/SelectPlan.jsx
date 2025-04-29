@@ -16,7 +16,7 @@ export default function SelectPlan({ step, formData, updateFormData, toggle, han
                     <section className='plans'>
                         <div className={formData.plan === 'arcade' ? 'plan active' : 'plan'} onClick={() => handlePlanSelect('arcade')}>
                             <div className='img'>
-                                <img src="./src/assets/images/icon-arcade.svg" alt="icon-arcade" />
+                                <img src="./images/icon-arcade.svg" alt="icon-arcade" />
                             </div>
                             <div className='plan-text'>
                                 <h4>Arcade</h4>
@@ -27,7 +27,7 @@ export default function SelectPlan({ step, formData, updateFormData, toggle, han
 
                         <div className={formData.plan === 'advanced' ? 'plan active' : 'plan'} onClick={() => handlePlanSelect('advanced')}>
                             <div className='img'>
-                                <img src="./src/assets/images/icon-advanced.svg" alt="icon-advanced" />
+                                <img src="./images/icon-advanced.svg" alt="icon-advanced" />
                             </div>
                             <div className='plan-text'>
                                 <h4>Advanced</h4>
@@ -38,7 +38,7 @@ export default function SelectPlan({ step, formData, updateFormData, toggle, han
 
                         <div className={formData.plan === 'pro' ? 'plan active' : 'plan'} onClick={() => handlePlanSelect('pro')}>
                             <div className='img'>
-                                <img src="./src/assets/images/icon-pro.svg" alt="icon-pro" />
+                                <img src="./images/icon-pro.svg" alt="icon-pro" />
                             </div>
                             <div className='plan-text'>
                                 <h4>Pro</h4>

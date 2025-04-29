@@ -22,7 +22,7 @@ export default function AddOns({ step, formData, updateFormData, toggle, onNext,
                             onClick={() => handleAddonToggle('online')}>
                             <div className='add-ons'>
                                 <div className={formData.addons.includes('online') ? 'checkbox active' : 'checkbox'}>
-                                    {formData.addons.includes('online') && <img src="./src/assets/images/icon-checkmark.svg" alt="icon-checkmark" />}
+                                    {formData.addons.includes('online') && <img src="./images/icon-checkmark.svg" alt="icon-checkmark" />}
                                 </div>
                                 <div className='addons-text'>
                                     <h4>Online service</h4>
@@ -37,7 +37,7 @@ export default function AddOns({ step, formData, updateFormData, toggle, onNext,
                             onClick={() => handleAddonToggle('storage')}>
                             <div className='add-ons'>
                                 <div className={formData.addons.includes('storage') ? 'checkbox active' : 'checkbox'}>
-                                    {formData.addons.includes('storage') && <img src="./src/assets/images/icon-checkmark.svg" alt="icon-checkmark" />}
+                                    {formData.addons.includes('storage') && <img src="./images/icon-checkmark.svg" alt="icon-checkmark" />}
                                 </div>
                                 <div className='addons-text'>
                                     <h4>Larger storage</h4>
@@ -52,7 +52,7 @@ export default function AddOns({ step, formData, updateFormData, toggle, onNext,
                             onClick={() => handleAddonToggle('profile')}>
                             <div className='add-ons'>
                                 <div className={formData.addons.includes('profile') ? 'checkbox active' : 'checkbox'}>
-                                    {formData.addons.includes('profile') && <img src="./src/assets/images/icon-checkmark.svg" alt="icon-checkmark" />}
+                                    {formData.addons.includes('profile') && <img src="./images/icon-checkmark.svg" alt="icon-checkmark" />}
                                 </div>
                                 <div className='addons-text'>
                                     <h4>Customizable profile</h4>
